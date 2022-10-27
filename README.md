@@ -1,6 +1,6 @@
 # iot-trash-compactor-detector
-This repo is meant to hold the ioT trash compactor repo for the chainlink hackathon
 
+This repo is meant to hold the ioT trash compactor repo for the chainlink hackathon
 
 # Architecture diagram
 
@@ -8,5 +8,5 @@ This repo is meant to hold the ioT trash compactor repo for the chainlink hackat
 
 # Technology used
 
-1. device simulator- https://nodered.org/
-2. 
+1. device simulator- https://nodered.org/ (setup by aldurin)
+2.
