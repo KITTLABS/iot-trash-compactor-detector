@@ -1,0 +1,151 @@
+[
+    {
+        "id": "32e9d7db038ff7e4",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "trash",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 580,
+        "wires": [
+            [
+                "d13976b60eef6035"
+            ]
+        ]
+    },
+    {
+        "id": "acd922ac4017654c",
+        "type": "mqtt out",
+        "z": "f6f2187d.f17ca8",
+        "name": "docker mosquitto pub",
+        "topic": "trash/temperature",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "42561c8946f5b01a",
+        "x": 860,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "c5dfc2e412276a83",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "docker mqtt subscription",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "42561c8946f5b01a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 470,
+        "y": 720,
+        "wires": [
+            [
+                "7ac00377b5d8e49a"
+            ]
+        ]
+    },
+    {
+        "id": "7ac00377b5d8e49a",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "output mqtt sub logs",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "d13976b60eef6035",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "random trash values",
+        "func": "var temperature = Math.round((Math.random() * 300))\nvar humidity = Math.round((Math.random() * 100))\nvar weight = Math.round((Math.random() * 500))\n\nconst newData = {\n    \"temperature\": temperature,\n    \"humidity\": humidity,\n    \"weight\": weight\n}\nmsg.timestamp = new Date(msg.payload)\ncontext.set('data', newData)\nmsg.data = context.get('data');\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 560,
+        "wires": [
+            [
+                "acd922ac4017654c",
+                "9e841711c41e404f"
+            ]
+        ]
+    },
+    {
+        "id": "9e841711c41e404f",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "output mqtt pub logs",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "42561c8946f5b01a",
+        "type": "mqtt-broker",
+        "name": "docker mosquitto client",
+        "broker": "192.168.1.68",
+        "port": "1883",
+        "clientid": "nodered",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
