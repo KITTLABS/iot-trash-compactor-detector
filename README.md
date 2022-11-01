@@ -22,7 +22,8 @@ This repo is meant to hold the ioT trash compactor repo for the chainlink hackat
 - add this line into it send fqdn.fqdn = gethostname();
 - or
 - make sure dhclient.conf looks similar to this and includes all the "send" and "request" formats as below:
-         send host-name = gethostname();
+     
+        send host-name = gethostname();
          send fqdn.fqdn = gethostname();
          #send dhcp-client-identifier 1:0:a0:24:ab:fb:9c;
          #send dhcp-lease-time 3600;
