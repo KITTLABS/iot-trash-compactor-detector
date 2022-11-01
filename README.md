@@ -38,3 +38,5 @@ below is what you should see once you login
 6. navigate to node-red URL : localhost:1880
 
 7. import the configuration for the device simulator file>import > point to node-flow.json in the output menu you should see logs printing out every 1 second
+
+NOTE: (If you see connection failed to mosquitto mqtt broker you may need to update the configuration to point to your private ip address (192.168.1.x use ifconfig to find if on MAC))
