@@ -8,8 +8,56 @@ This repo is meant to hold the ioT trash compactor repo for the chainlink hackat
 
 # Technology used
 
-1. device simulator- https://nodered.org/ (setup by aldurin)
-2.
+1. Raspberry Pi 3B - device simulator- https://nodered.org/ (setup by aldrin)
+- Minimum Requiremments: Rapsberry Pi with any Raspbian IoS version
+- Micro SB card 8GB minimum
+- Public IP address if remote access is required.
+- Remote Access tool like VNC server
+- Make sure you have a keyboard, mouse and monitor to plug into the Raspberry for initial configuration
+2. Install node-red for raspbian
+- basic command line > apt-get install nodered  
+- additional details @ https://nodered.org/docs/getting-started/raspberrypi
+2.1 Network configurations
+- if wifi is unstable, add modification in etc/dhclient.conf are needed
+- add this line into it send fqdn.fqdn = gethostname();
+- or
+- make sure dhclient.conf looks similar to this and includes all the "send" and "request" formats as below:
+         send host-name = gethostname();
+         send fqdn.fqdn = gethostname();
+         #send dhcp-client-identifier 1:0:a0:24:ab:fb:9c;
+         #send dhcp-lease-time 3600;
+         #supersede domain-name "fugue.com home.vix.com";
+         #prepend domain-name-servers 127.0.0.1;
+         request subnet-mask, broadcast-address, time-offset, routers,
+                 domain-name, domain-name-servers, domain-search, host-name,
+                 netbios-name-servers, netbios-scope, interface-mtu,
+                 rfc3442-classless-static-routes, ntp-servers,
+                 dhcp6.domain-search, dhcp6.fqdn,
+                 dhcp6.name-servers, dhcp6.sntp-servers;
+         #require subnet-mask, domain-name-servers;
+
+3. After wifi and node-red install :
+- The following commands are provided to work with the service:
+
+         node-red-start - this starts the Node-RED service and displays its log output. Pressing Ctrl-C or closing the window does not stop the service; it keeps running in the background
+         node-red-stop - this stops the Node-RED service
+         node-red-restart - this stops and restarts the Node-RED service
+         node-red-log - this displays the log output of the service
+ 
+ use this command line  to enable auto restart of node-red services
+         sudo systemctl enable nodered.service
+and to disable it:
+      sudo systemctl disable nodered.service
+
+4. Once Node-RED is running you can access the editor in a browser.
+
+If you are using the browser on the Pi desktop, you can open the address: http://localhost:1880.
+
+5. Information for this project and ONLY FOR THE Interest participants and DO NOT share.
+>>>node-red user: trashcompactor  
+>>>paswd: chainlink 
+>>>paraphrase for flows: web3
+>>>users: root and pi-top (both with chainlink as pwd)
 
 # How to start device simulator
 
