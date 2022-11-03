@@ -76,9 +76,26 @@ eclipse-mosquitto: lightweight mqtt broker
 - username: cedalo
 - password: mmcisawesome
 
+When everything is installed and started correctly the applications should be available under the following URLs:
+
+> Eclipse Mosquitto: mqtt://localhost:1883
+
+Eclipse Streamsheets Web UI: http://localhost:8081
+
+> Default Credentials: User: admin Password: 1234. Change your password in the administration menu.
+
+Management Center Web UI: http://localhost:8088
+
+> Default Credentials: User: cedalo Password: mmcisawesome. 
+
+Change the password in the docker-compose.yml file. Find and change this entry:
+
 below is what you should see once you login
 
 3. Navigate to `localhost:8081` to view streamsheets and hit play button to the right of the box labeled "Wind Turbine"
+ > in case there is box with Wind Turbine, loing to Web UI http://localhost:8081 and click on MQTT connector:
+ make sure that the consumers have the icon "plugged" or nothing looks "red disconnected"
+ > open the wind turbine dashboard and wind turbine by clicking on the boxes it would open two browser tabs click run (both spreadsheets
 
 4. Go back to management UI and go to the topic tree tab you should see the wind turbine data coming through in your topic tree along with their payloads
 
