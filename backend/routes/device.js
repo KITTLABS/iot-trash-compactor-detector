@@ -3,15 +3,11 @@ const router = express.Router();
 const logger = require('../helpers/logger');
 
 // Routes
-router.get('/:deviceId', getDeviceInfo);
 router.get('/summary', getSummary);
+router.get('/:deviceId', getDeviceInfo);
 
 // Functions
-async function routeInfo(req, res) {
-  return res.status(200).json({
-    data: 'try to hit /device/:deviceId or /summary'
-  });
-}
+
 async function getDeviceInfo(req, res) {
   logger.info('API route /:deviceId: ' + req.params.deviceId);
 
