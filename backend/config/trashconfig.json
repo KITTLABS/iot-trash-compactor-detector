@@ -1,0 +1,8 @@
+{
+    "name": "trashdevice001",
+    "port": 3000,
+    "host": "localhost",
+    "env": "dev",
+    "topics": [],
+    "subscription": []
+}
