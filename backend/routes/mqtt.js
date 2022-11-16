@@ -7,9 +7,9 @@ const mqtt = require('mqtt');
 router.get('/sub', getSubscriptions);
 router.get('/pub', sendPub);
 const options = {
-  clientId: 'ndoejs-client',
+  clientId: 'nodejs-client',
   connectTimeout: 5000,
-  hostname: '192.168.1.68',
+  hostname: '192.168.1.14',
   username: 'cedalo',
   password: 'KqGXVqdfZ6',
   port: 1883
